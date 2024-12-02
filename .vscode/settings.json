@@ -1,0 +1,16 @@
+{
+  "sqltools.connections": [
+    {
+      "pgOptions": {
+        "ssl": {
+          "rejectUnauthorized": true
+        }
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "driver": "PostgreSQL",
+      "name": "Go-RSS-Aggr",
+      "connectString": "postgres://postgres@d29p0qas9bea63j6.browser.db.build/postgres?sslmode=require"
+    }
+  ]
+}
