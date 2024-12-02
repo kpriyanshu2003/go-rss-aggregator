@@ -63,7 +63,7 @@ func main() {
 	v1 := r.Group("/v1")
 	{
 		v1.GET("/health", func(ctx *gin.Context) {
-			handlerReadiness(ctx)
+			handlerReadiness(ctx.Writer, ctx.Request)
 		})
 
 		v1.GET("/err", func(ctx *gin.Context) {
@@ -71,7 +71,7 @@ func main() {
 		})
 
 		v1.POST("/users", func(ctx *gin.Context) {
-			apiCfg.handlerCreateUser(ctx)
+			apiCfg.handlerUsersCreate(ctx.Writer, ctx.Request)
 		})
 
 	}
