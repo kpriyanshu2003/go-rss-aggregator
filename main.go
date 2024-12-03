@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -37,11 +38,12 @@ func main() {
 	if err != nil {
 		log.Fatal("Can't connect database", err)
 	}
-
+	db := database.New(conn)
 	apiCfg := apiConfig{
-		DB: database.New(conn),
+		DB: db,
 	}
 
+	go startScraping(db, 5, time.Minute)
 	r := gin.Default()
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
@@ -68,6 +70,8 @@ func main() {
 		v1.GET("/feed-follow", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowGet))
 		v1.POST("/feed-follow", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowCreate))
 		v1.DELETE("/feed-follow/:id", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowDelete))
+
+		v1.GET("/posts", apiCfg.middlewareAuth(apiCfg.handlerGetPostsForUser))
 	}
 
 	srv := &http.Server{

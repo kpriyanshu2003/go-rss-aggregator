@@ -46,3 +46,23 @@ func (cfg *apiConfig) handlerUsersGet(ctx *gin.Context) {
 	dbUser := user.(database.User)
 	respondWithJSON(ctx.Writer, http.StatusOK, databaseUserToUser(dbUser))
 }
+
+func (cfg *apiConfig) handlerGetPostsForUser(ctx *gin.Context) {
+	user, exists := ctx.Get("user")
+	if !exists {
+		respondWithError(ctx.Writer, http.StatusUnauthorized, "User not found in context")
+		return
+	}
+
+	dbUser := user.(database.User)
+	posts, err := cfg.DB.GetPostsForUsers(ctx.Request.Context(), database.GetPostsForUsersParams{
+		UserID: dbUser.ID,
+		Limit:  10,
+	})
+	if err != nil {
+		log.Println(err)
+		respondWithError(ctx.Writer, http.StatusInternalServerError, "Couldn't get posts")
+		return
+	}
+	respondWithJSON(ctx.Writer, http.StatusOK, databasePostsToPosts(posts))
+}
