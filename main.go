@@ -52,28 +52,22 @@ func main() {
 		MaxAge:           300,
 	}))
 
-	r.NoRoute(func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "API is running..."})
-	})
-
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "pong"})
-	})
+	r.NoRoute(handlerDefault)
 
 	v1 := r.Group("/v1")
 	{
-		v1.GET("/health", func(ctx *gin.Context) {
-			handlerReadiness(ctx.Writer, ctx.Request)
-		})
+		v1.GET("/health", handlerReadiness)
+		v1.GET("/err", handlerErr)
 
-		v1.GET("/err", func(ctx *gin.Context) {
-			handleErr(ctx)
-		})
+		v1.GET("/users", apiCfg.middlewareAuth(apiCfg.handlerUsersGet))
+		v1.POST("/users", apiCfg.handlerUsersCreate)
 
-		v1.POST("/users", func(ctx *gin.Context) {
-			apiCfg.handlerUsersCreate(ctx.Writer, ctx.Request)
-		})
+		v1.GET("/feed", apiCfg.handlerFeedGet)
+		v1.POST("/feed", apiCfg.middlewareAuth(apiCfg.handlerFeedCreate))
 
+		v1.GET("/feed-follow", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowGet))
+		v1.POST("/feed-follow", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowCreate))
+		v1.DELETE("/feed-follow/:id", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowDelete))
 	}
 
 	srv := &http.Server{
