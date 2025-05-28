@@ -1,0 +1,30 @@
+├── cmd/server/main.go                    # Application entry point
+├── internal/
+│   ├── auth/auth.go                      # Authentication utilities
+│   ├── config/config.go                  # Configuration management
+│   ├── database/                         # Database layer (sqlc generated)
+│   │   ├── db.go
+│   │   ├── models.go
+│   │   ├── users.sql.go
+│   │   ├── feeds.sql.go
+│   │   ├── feed_follows.sql.go
+│   │   └── posts.sql.go
+│   ├── handlers/                         # HTTP handlers
+│   │   ├── config.go
+│   │   ├── health.go
+│   │   ├── user.go
+│   │   ├── feed.go
+│   │   ├── feed_follow.go
+│   │   └── post.go
+│   ├── middleware/auth.go                # Authentication middleware
+│   ├── models/models.go                  # Data models and transformations
+│   ├── routes/routes.go                  # Route definitions
+│   ├── services/scraper.go               # RSS scraping service
+│   └── utils/json.go                     # JSON response utilities
+├── Dockerfile                            # Container configuration
+├── docker-compose.yml                    # Development environment
+├── Makefile                             # Build commands
+├── .env.example                         # Environment variables template
+├── .air.toml                            # Hot reload configuration
+├── go.mod                               # Go modules
+└── README.md                            # Project documentation

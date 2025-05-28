@@ -4,34 +4,63 @@ A fast and lightweight RSS aggregator built with Go. This project allows you to 
 
 ## Features
 
-- 🚀 **High Performance**: Built entirely in Go for speed and efficiency.
-- 📡 **Multiple Feed Support**: Aggregate updates from several RSS feeds.
-- 🗂️ **Simple Feed Management**: Add, remove, and organize your feeds easily.
-- 🕒 **Scheduled Fetching**: Automatically refreshes feeds at configurable intervals.
-- 🖥️ **Web Interface/API**: (Optional) Access your aggregated content via a web frontend or RESTful API.
-- 📝 **Clean Codebase**: Modular, idiomatic Go code, easy to extend.
+- **User Management**: Create users with API key authentication
+- **Feed Management**: Add and manage RSS feeds
+- **Feed Following**: Users can follow/unfollow feeds
+- **Automatic Scraping**: Background service that periodically fetches RSS feeds
+- **Post Aggregation**: Collect and store posts from followed feeds
+- **RESTful API**: Clean HTTP API with JSON responses
+- **Docker Support**: Containerized deployment with Docker Compose
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Go](https://golang.org/dl/) 1.18 or higher
-- [Postgres Database](https://www.postgresql.org/download/) (if using the database backend)
-- Optional: [Docker](https://www.docker.com/get-started) for containerized deployment
+- Go 1.21 or later
+- PostgreSQL 12 or later
+- Docker (optional)
 
 ### Installation
 
-Clone the repository:
+1. Clone the repository:
 
 ```sh
 git clone https://github.com/kpriyanshu2003/go-rss-aggregator.git
 cd go-rss-aggregator
 ```
 
-Install dependencies (if any):
+2. Install dependencies (if any):
 
 ```sh
-go mod tidy
+make deps
+```
+
+3. Set up environment variables:
+
+```sh
+cp .env.example .env
+```
+
+4. Set up the database:
+
+```sh
+# Create database and run migrations
+make migrate-up
+```
+
+5. Run the application:
+
+```sh
+make run
+```
+
+### Development
+
+For development with hot reload:
+
+```sh
+go install github.com/cosmtrek/air@latest
+make dev
 ```
 
 ### Running the Aggregator
@@ -49,10 +78,14 @@ go build -o rss-aggregator
 ./rss-aggregator
 ```
 
-### Configuration
+## Configuration
 
-- Configure your feed sources and settings in the `config.yaml` (if provided) or via environment variables.
-- Example feeds can be added in the config or via CLI/API (see usage instructions).
+Configure the application using environment variables:
+
+| Variable | Description                  | Default  |
+| -------- | ---------------------------- | -------- |
+| `PORT`   | Server port                  | `8080`   |
+| `DB_URL` | PostgreSQL connection string | Required |
 
 ## Usage
 
@@ -62,6 +95,7 @@ go build -o rss-aggregator
 
 ## API Docs
 
+- [Postman Collection](https://www.postman.com/infinitybridge/workspace/public-projects/collection/29585525-361a9a16-70cf-444b-87d2-db486c20f767?action=share&source=copy-link&creator=29585525&active-environment=fac7a35e-2db6-45cc-97a6-81e8d0a93501)
 - [api doc](./api-doc.md)
 
 ## Contributing
@@ -78,10 +112,10 @@ Pull requests are welcome! For significant changes, please open an issue first t
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Acknowledgements
+## Acknowledgments
 
-- [Go](https://golang.org/)
-
----
+- Built with [Gin](https://github.com/gin-gonic/gin) web framework
+- Database queries generated with [sqlc](https://github.com/kyleconroy/sqlc)
+- Uses [UUID](https://github.com/google/uuid) for unique identifiers# README.md
 
 Happy aggregating! 🚀

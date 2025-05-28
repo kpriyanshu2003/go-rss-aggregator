@@ -8,6 +8,7 @@ Base URL: `http://localhost:3300/v1/`
 ## Users
 
 ### Create User
+
 - **Endpoint:** `POST /users`
 - **Body (JSON):**
   ```json
@@ -18,6 +19,7 @@ Base URL: `http://localhost:3300/v1/`
 - **Description:** Creates a new user.
 
 ### Get All Users
+
 - **Endpoint:** `GET /users`
 - **Description:** Returns a list of users.
 
@@ -26,17 +28,20 @@ Base URL: `http://localhost:3300/v1/`
 ## Feed
 
 ### Get All Feeds
+
 - **Endpoint:** `GET /feed`
 - **Description:** Returns all RSS feeds.
 
 ### Create Feed
+
 - **Endpoint:** `POST /feed`
 - **Headers:**
   - `Authorization: ApiKey <your_api_key>`
 - **Body (JSON):**
   ```json
   {
-    "name": "Inner Locus"
+    "name": "Inner Locus",
+    "url": "https://innerlocus.com/feed"
   }
   ```
 - **Description:** Creates a new RSS feed.
@@ -46,6 +51,7 @@ Base URL: `http://localhost:3300/v1/`
 ## Feed Follows
 
 ### Follow a Feed
+
 - **Endpoint:** `POST /feed-follow`
 - **Body (JSON):**
   ```json
@@ -56,10 +62,12 @@ Base URL: `http://localhost:3300/v1/`
 - **Description:** Follows a feed for the user.
 
 ### Get Followed Feeds
+
 - **Endpoint:** `GET /feed-follow`
 - **Description:** Returns the list of feeds the user is following.
 
 ### Unfollow a Feed
+
 - **Endpoint:** `DELETE /feed-follow/:id`
 - **Headers:**
   - `Authorization: ApiKey <your_api_key>`
@@ -72,6 +80,7 @@ Base URL: `http://localhost:3300/v1/`
 ## Posts
 
 ### Get All Posts by User
+
 - **Endpoint:** `GET /posts`
 - **Description:** Returns all posts for the authenticated user.
 

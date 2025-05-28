@@ -1,227 +1,549 @@
 {
-  "info": {
-    "_postman_id": "16c028bd-fa83-473f-8182-b36f6df1106f",
-    "name": "RSS Aggregator",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "29585525"
-  },
-  "item": [
-    {
-      "name": "Users",
-      "item": [
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\":\"Inner Locus\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:3300/v1/users",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "users"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:3300/v1/users",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "users"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Feed",
-      "item": [
-        {
-          "name": "All",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:3300/v1/feed",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "feed"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "ApiKey 475ce2c168d07466bf4d362c2f3070b7043f2a5ea6750145cc712236ad811428",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\":\"Inner Locus\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:3300/v1/feed",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "feed"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Feed Follows",
-      "item": [
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"feed_id\":\"a55ca052-90c6-4cbc-ac42-7fc1cb996795\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:3300/v1/feed-follow",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "feed-follow"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:3300/v1/feed-follow",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "feed-follow"],
-              "query": [
-                {
-                  "key": "",
-                  "value": "ApiKey 475ce2c168d07466bf4d362c2f3070b7043f2a5ea6750145cc712236ad811428",
-                  "disabled": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "ApiKey 475ce2c168d07466bf4d362c2f3070b7043f2a5ea6750145cc712236ad811428",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "localhost:3300/v1/feed-follow/:id",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "feed-follow", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "6a023b86-16ef-4376-a8cd-9623bc47ef22"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Posts",
-      "item": [
-        {
-          "name": "All by User",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:3300/v1/posts",
-              "host": ["localhost"],
-              "port": "3300",
-              "path": ["v1", "posts"]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "auth": {
-    "type": "apikey",
-    "apikey": [
-      {
-        "key": "value",
-        "value": "{{token}}",
-        "type": "string"
-      },
-      {
-        "key": "key",
-        "value": "Authorization",
-        "type": "string"
-      }
-    ]
-  },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [""]
-      }
-    }
-  ]
+	"info": {
+		"_postman_id": "361a9a16-70cf-444b-87d2-db486c20f767",
+		"name": "RSS Aggregator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29585525"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Inner Locus\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Inner Locus\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:01:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"96e64b22-af0e-4879-b8b1-fd25a3069629\",\n    \"created_at\": \"2025-05-28T22:01:16.992218Z\",\n    \"updated_at\": \"2025-05-28T22:01:16.992218Z\",\n    \"name\": \"Inner Locus\",\n    \"api_key\": \"de7af2d902f411fa7bf0d84d7a58af6b5d0c22e993434dad743a97c76dbd11ee\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/v1/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:04:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"96e64b22-af0e-4879-b8b1-fd25a3069629\",\n    \"created_at\": \"2025-05-28T22:01:16.992218Z\",\n    \"updated_at\": \"2025-05-28T22:01:16.992218Z\",\n    \"name\": \"Inner Locus\",\n    \"api_key\": \"de7af2d902f411fa7bf0d84d7a58af6b5d0c22e993434dad743a97c76dbd11ee\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Feed",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/feed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"feed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/v1/feed",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"feed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:08:41 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "259"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"49d10307-1f77-441e-8d49-433ea6c92090\",\n        \"created_at\": \"2025-05-28T22:08:32.726074Z\",\n        \"updated_at\": \"2025-05-28T22:08:32.726074Z\",\n        \"name\": \"Inner Locus\",\n        \"url\": \"https://clist.by:443/api/v4/contest/?format=rss\",\n        \"user_id\": \"96e64b22-af0e-4879-b8b1-fd25a3069629\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "ApiKey 475ce2c168d07466bf4d362c2f3070b7043f2a5ea6750145cc712236ad811428",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Inner Locus\",\r\n    \"url\":\"https://clist.by:443/api/v4/contest/?format=rss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/feed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"feed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "ApiKey 475ce2c168d07466bf4d362c2f3070b7043f2a5ea6750145cc712236ad811428",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Inner Locus\",\r\n    \"url\":\"https://clist.by:443/api/v4/contest/?format=rss\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/feed",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"feed"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:08:32 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "257"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"49d10307-1f77-441e-8d49-433ea6c92090\",\n    \"created_at\": \"2025-05-28T22:08:32.726074Z\",\n    \"updated_at\": \"2025-05-28T22:08:32.726074Z\",\n    \"name\": \"Inner Locus\",\n    \"url\": \"https://clist.by:443/api/v4/contest/?format=rss\",\n    \"user_id\": \"96e64b22-af0e-4879-b8b1-fd25a3069629\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Feed Follows",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"feed_id\":\"49d10307-1f77-441e-8d49-433ea6c92090\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/feed-follow",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"feed-follow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"feed_id\":\"49d10307-1f77-441e-8d49-433ea6c92090\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/feed-follow",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"feed-follow"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:09:14 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"93306e88-2fe4-4986-a9fe-8efeb0ce7fdc\",\n    \"created_at\": \"2025-05-28T22:09:14.572363Z\",\n    \"updated_at\": \"2025-05-28T22:09:14.572363Z\",\n    \"user_id\": \"96e64b22-af0e-4879-b8b1-fd25a3069629\",\n    \"feed_id\": \"49d10307-1f77-441e-8d49-433ea6c92090\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/feed-follow",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"feed-follow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/v1/feed-follow",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"feed-follow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:09:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"93306e88-2fe4-4986-a9fe-8efeb0ce7fdc\",\n        \"created_at\": \"2025-05-28T22:09:14.572363Z\",\n        \"updated_at\": \"2025-05-28T22:09:14.572363Z\",\n        \"user_id\": \"96e64b22-af0e-4879-b8b1-fd25a3069629\",\n        \"feed_id\": \"49d10307-1f77-441e-8d49-433ea6c92090\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "ApiKey 475ce2c168d07466bf4d362c2f3070b7043f2a5ea6750145cc712236ad811428",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/feed-follow/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"feed-follow",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6a023b86-16ef-4376-a8cd-9623bc47ef22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "All by User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All by User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/v1/posts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 22:05:53 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "22"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 0,\n    \"posts\": []\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "ApiKey {{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
 }
