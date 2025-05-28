@@ -16,6 +16,8 @@ A fast and lightweight RSS aggregator built with Go. This project allows you to 
 ### Prerequisites
 
 - [Go](https://golang.org/dl/) 1.18 or higher
+- [Postgres Database](https://www.postgresql.org/download/) (if using the database backend)
+- Optional: [Docker](https://www.docker.com/get-started) for containerized deployment
 
 ### Installation
 
@@ -61,7 +63,6 @@ go build -o rss-aggregator
 ## API Docs
 
 - [api doc](./api-doc.md)
-
 
 ## Contributing
 
