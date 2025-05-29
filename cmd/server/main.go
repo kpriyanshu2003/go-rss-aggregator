@@ -8,7 +8,6 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"github.com/kpriyanshu2003/go-rss-aggregator/internal/config"
 	"github.com/kpriyanshu2003/go-rss-aggregator/internal/database"
 	"github.com/kpriyanshu2003/go-rss-aggregator/internal/handlers"
@@ -17,12 +16,6 @@ import (
 	"github.com/kpriyanshu2003/go-rss-aggregator/internal/services"
 	_ "github.com/lib/pq"
 )
-
-func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Println("No .env file found")
-	}
-}
 
 func main() {
 	cfg, err := config.Load()
@@ -46,7 +39,7 @@ func main() {
 	go scraperService.Start()
 
 	handlerConfig := &handlers.Config{DB: db}
-router := setupRouter(handlerConfig)
+	router := setupRouter(handlerConfig)
 	server := &http.Server{
 		Addr:         ":" + cfg.Port,
 		Handler:      router,
