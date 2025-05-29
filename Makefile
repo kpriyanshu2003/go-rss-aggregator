@@ -2,7 +2,7 @@
 
 BINARY_NAME=rss-aggregator
 PORT=8080
-DB_URL=postgres://postgres:admin@localhost:5432/postgres
+DB_URL=
 
 build:
 	@echo "Building $(BINARY_NAME)..."
