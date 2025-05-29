@@ -8,7 +8,7 @@ build:
 	@echo "Building $(BINARY_NAME)..."
 	go build -o bin/$(BINARY_NAME) cmd/server/main.go
 
-run: build
+run:
 	@echo "Running $(BINARY_NAME)..."
 	./bin/$(BINARY_NAME)
 
