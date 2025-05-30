@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -24,7 +23,6 @@ func main() {
 		log.Fatal("Failed to load configuration:", err)
 	}
 
-	fmt.Println(cfg)
 	conn, err := sql.Open("postgres", cfg.DatabaseURL)
 	if err != nil {
 		log.Fatal("Can't connect to database:", err)
