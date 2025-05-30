@@ -1,8 +1,6 @@
 .PHONY: build run test clean dev deps sqlc-gen docker-build docker-run fmt lint help
 
 BINARY_NAME=rss-aggregator
-PORT=8080
-DB_URL=
 
 build:
 	@echo "Building $(BINARY_NAME)..."
